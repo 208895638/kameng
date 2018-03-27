@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="Cache-Control:private" content="max-age=0" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <!-- 是否启用 WebApp 全屏模式，删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- 设置苹果工具栏颜色 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit" />
+    <!--百度禁止转码-->
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true" />
+    <!-- 微软的老式浏览器 -->
+    <meta name="MobileOptimized" content="320" />
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait" />
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait" />
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes" />
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true" />
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application" />
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app" />
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no" />
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+
+<body>
+    <div class="user_box">
+        <!--顶部logo-->
+        <div class="zy_logo">
+            <img src="images/logo.png" />
+        </div>
+        <!--登录 注册Tab切换-->
+        <div class="zy_tab_user">
+            <div class="zy_tab_top">
+                <a href="javascript:;" class="zy_login on">登录</a>
+                <a href="javascript:;" class="zy_register">注册</a>
+            </div>
+            <div class="zy_infor clearfix">
+                <!--登录注册-->
+                <div class="box clearfix on">
+                    <div class="zy_tab_infor l">
+                        <p class="clearfix">
+                            <label for="username" class="l"></label>
+                            <input type="text" name="username" id="username" class="l borderNone" placeholder="请输入用户名" />
+                        </p>
+                        <p class="clearfix">
+                            <label for="password" class="icon_password l"></label>
+                            <input type="password" name="password" id="password" placeholder="请输入密码" class="l borderNone" />
+                        </p>
+                        <button type="button" class="btn btn_blue borderNone login">登录</button>
+
+                    </div>
+                    <div class="zy_tab_infor l">
+                        <p class="clearfix">
+                            <label for="username1" class="l"></label>
+                            <input type="text" name="username" id="username1" class="l borderNone" placeholder="请输入账号" />
+                        </p>
+                        <p class="clearfix">
+                            <label for="password1" class="icon_password l"></label>
+                            <input type="password" name="password" id="password1" placeholder="请输入密码" class="l borderNone" />
+                        </p>
+                        <p class="clearfix">
+                            <label for="mm" class="icon_password l"></label>
+                            <input type="mm" name="mm" id="mm" placeholder="确认密码" class="l borderNone" />
+                        </p>
+                        <div class="zy_agreement">
+                            <input type="checkbox" name="" id="" value="" class="borderNone" />
+                            <em>接受</em><a href="javascript:;">《用户注册协议》</a><em>和</em><a href="javascript:;">《隐私权条款》</a>
+                        </div>
+                        <button type="button" class="btn btn_blue borderNone register">立即注册</button>
+
+                    </div>
+                </div>
+            </div>
+            <!--第三方登录-->
+            <div class="zy_other">
+                <div class="bg_line">
+                    <div class="zy_line">&nbsp;</div>
+                    <p>您还可以通过以下方式登录</p>
+                </div>
+                <div class="clearfix box">
+                    <a href="javascript:;">
+                        <dl>
+                            <dt><img src="images/qq.png"/></dt>
+                            <dd>QQ</dd>
+                        </dl>
+                    </a>
+                    <a href="javascript:;">
+                        <dl>
+                            <dt><img src="images/weixin.png"/></dt>
+                            <dd>微信</dd>
+                        </dl>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="safe hide">
+        <dl>
+            <dt></dt>
+            <dd>
+                <img src="images/cha.png" />
+            </dd>
+        </dl>
+    </div>
+</body>
+
+<script src="js/plugins/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/plugins/rem.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/login.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    $(function() {
+        var username = $("#username1").val();
+        var password = $("#password1").val();
+        $(".register").on("click", function() {
+            console.log($("#username1").val(), $("#password1").val());
+            $.ajax({
+                url: "/register",
+                type: "get",
+                data: {
+                    username: $("#username1").val(),
+                    password: $("#password1").val()
+                },
+                success: function(data) {
+                    console.log(data);
+                },
+                error: function(res) {
+                    console.log("连接失败" + res)
+                }
+            })
+        })
+    });
+</script>
+
+</html>

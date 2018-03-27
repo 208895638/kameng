@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>注册</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<meta http-equiv="Cache-Control:private" content="max-age=0" />
+		 <meta name="apple-touch-fullscreen" content="yes" />
+	    <!-- 是否启用 WebApp 全屏模式，删除苹果默认的工具栏和菜单栏 -->
+	    <meta name="apple-mobile-web-app-capable" content="yes" />
+	    <!-- 设置苹果工具栏颜色 -->
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	    <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+	    <meta name="format-detection" content="telephone=no, email=no" />
+	    <!-- 启用360浏览器的极速模式(webkit) -->
+	    <meta name="renderer" content="webkit" />
+	    <!--百度禁止转码-->
+	    <meta http-equiv="Cache-Control" content="no-siteapp" />
+	    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+	    <meta name="HandheldFriendly" content="true" />
+	    <!-- 微软的老式浏览器 -->
+	    <meta name="MobileOptimized" content="320" />
+	    <!-- uc强制竖屏 -->
+	    <meta name="screen-orientation" content="portrait" />
+	    <!-- QQ强制竖屏 -->
+	    <meta name="x5-orientation" content="portrait" />
+	    <!-- UC强制全屏 -->
+	    <meta name="full-screen" content="yes" />
+	    <!-- QQ强制全屏 -->
+	    <meta name="x5-fullscreen" content="true" />
+	    <!-- UC应用模式 -->
+	    <meta name="browsermode" content="application" />
+	    <!-- QQ应用模式 -->
+	    <meta name="x5-page-mode" content="app" />
+	    <!-- windows phone 点击无高光 -->
+	    <meta name="msapplication-tap-highlight" content="no" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	</head>
+	<body>
+		<div class="commmon_box">
+			<div class="common_head clearfix">
+				<span class="l"><img src="images/back.png"/></span>
+				<h2 class="l">我的账户信息</h2>
+				<em class="r"></em>
+			</div>
+			<div class="account_box">
+				<!--账户资料-->
+				<dl>
+					<dt>账户资料</dt>
+					<dd class="clearfix">
+						<span class="l">客户编号</span>
+						<em class="r">
+							54851223
+						</em>
+					</dd>
+					<dd class="clearfix">
+						<span class="l">用 户 名</span>
+						<em class="r">
+							qq20171221832150
+						</em>
+					</dd>
+					<dd class="clearfix">
+						<span class="l">注册时间</span>
+						<em class="r">
+							2017-12-21 14:07:20
+						</em>
+					</dd>
+				</dl>
+				<!--账号管理-->
+				<dl>
+					<dt>账号管理</dt>
+					<dd class="clearfix">
+						<span class="l">QQ绑定</span>
+						<em class="r">
+							<a href="javascript:;" class=" text_blue">
+								qq20171221832150<i><img src="images/go.png"/></i>
+							</a>
+						</em>
+						
+					</dd>
+					<dd class="clearfix">
+						<span class="l">用 户 名</span>
+						<em class="r">
+							<a href="javascript:;" class=" text_999">
+								往事随风<i><img src="images/go.png"/></i>
+							</a>
+						</em>
+					</dd>
+					<dd class="clearfix">
+						<span class="l">注册时间</span>
+						<em class="r">
+							<a href="javascript:;" class=" text_blue">
+								未设置<i><img src="images/go.png"/></i>
+							</a>
+						</em>
+					</dd>
+					<dd class="clearfix">
+						<span class="l">设置登陆密码</span>
+						<em class="r">
+							<a href="javascript:;" class=" text_333">
+								5445621245<i><img src="images/go.png"/></i>
+							</a>
+						</em>
+					</dd>
+				</dl>
+			</div>
+			<div class="login_out">
+				<a href="javascript:;">退出登录</a>
+			</div>
+		</div>
+		<div class="toast hide">
+			<div class="toast_box">
+				<dl>
+					<dt>退出登录</dt>
+					<dd>您将退出此次登陆，是否确定？</dd>
+				</dl>
+				<div class="btn_box clearfix">
+					<a href="javascript:;" class="cancel l" >取消</a>
+					<a href="javascript:;" class="confirm r" >确认退出</a>
+				</div>
+			</div>
+		</div>
+	</body>
+	
+	<script src="js/plugins/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/plugins/rem.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function(){
+			//对话框隐藏显示
+			$(".login_out").on("click",function(){
+				$(".toast").addClass("show");
+			});
+			$(".cancel").on("click",function(){
+				$(".toast").removeClass("show").addClass("hide");
+			});
+			$(".confirm").on("click",function(){
+				$(".toast").removeClass("show").addClass("hide");
+			});
+		})
+	</script>
+</html>
