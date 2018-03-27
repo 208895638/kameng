@@ -138,13 +138,17 @@
                     password: $("#password1").val()
                 },
                 success: function(data) {
-                    console.log(data);
+                    console.log(data, typeof(data));
+                    alert(data.msg);
+                    $('.zy_login').addClass("on").siblings().removeClass("on");
+
                 },
                 error: function(res) {
                     console.log("连接失败" + res)
                 }
             })
-        })
+        });
+
     });
 </script>
 
