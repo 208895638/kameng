@@ -69,7 +69,7 @@
                     <div class="zy_tab_infor l">
                         <p class="clearfix">
                             <label for="username1" class="l"></label>
-                            <input type="text" name="username" id="username1" class="l borderNone" placeholder="请输入账号" />
+                            <input type="number" name="username" id="username1" class="l borderNone" placeholder="请输入手机号" />
                         </p>
                         <p class="clearfix">
                             <label for="password1" class="icon_password l"></label>
@@ -78,6 +78,14 @@
                         <p class="clearfix">
                             <label for="mm" class="icon_password l"></label>
                             <input type="mm" name="mm" id="mm" placeholder="确认密码" class="l borderNone" />
+                        </p>
+                        <p class="clearfix">
+                            <label for="yzm" class="icon_password l"></label>
+                            <input type="mm" name="mm" id="yzm" placeholder="请输入验证码" class="l borderNone" />
+                            <span class="imgWrapper r">
+                                <span class="sendCode">获取验证码</span>
+                            <span class="retry hide"><span>60</span>秒后重试</span>
+                            </span>
                         </p>
                         <div class="zy_agreement">
                             <input type="checkbox" name="" id="" value="" class="borderNone" />
@@ -130,25 +138,92 @@
         var password = $("#password1").val();
         $(".register").on("click", function() {
             console.log($("#username1").val(), $("#password1").val());
-            $.ajax({
-                url: "/register",
-                type: "get",
-                data: {
-                    username: $("#username1").val(),
-                    password: $("#password1").val()
-                },
-                success: function(data) {
-                    console.log(data, typeof(data));
-                    alert(data.msg);
-                    $('.zy_login').addClass("on").siblings().removeClass("on");
+            var myreg = /^(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(16[0-9]{1})|(17[0-9]{1})|(18[0-9]{1})|(19[0-9]{1}))+\d{8})$/;
+            if ($("#username1").val() == '') {
+                alert('手机号不能为空');
+                return;
+            } else if (!myreg.test($("#username1").val()))  {     
+                alert('请输入有效的手机号码！');  
+                return;
+            } else {
+                $.ajax({
+                    url: "/register",
+                    type: "get",
+                    data: {
+                        username: $("#username1").val(),
+                        password: $("#password1").val()
+                    },
+                    success: function(data) {
+                        console.log(data, typeof(data));
+                        alert(data.msg);
+                        if (data.code == 0) {
+                            $(".zy_login").addClass("on").siblings().removeClass("on");
+                            $(".zy_infor .box").addClass("on");
+                        };
+                    },
+                    error: function(res) {
+                        console.log("连接失败" + res)
+                    }
+                })
+            }
 
-                },
-                error: function(res) {
-                    console.log("连接失败" + res)
-                }
-            })
         });
+        $(".login").on("click", function() {
+            console.log($("#username").val(), $("#password").val());
+            var myreg = /^(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(16[0-9]{1})|(17[0-9]{1})|(18[0-9]{1})|(19[0-9]{1}))+\d{8})$/;
+            if ($("#username").val() == '') {
+                alert('手机号不能为空');
+                return;
+            } else if (!myreg.test($("#username").val()))  {     
+                alert('请输入有效的手机号码！');  
+                return;
+            } else {
+                $.ajax({
+                    url: "/login",
+                    type: "get",
+                    data: {
+                        username: $("#username").val(),
+                        password: $("#password").val()
+                    },
+                    success: function(data) {
+                        console.log(data, typeof(data));
+                        alert(data.msg);
 
+                    },
+                    error: function(res) {
+                        console.log("连接失败" + res)
+                    }
+                })
+            }
+
+        });
+        //发送验证码
+        $('.imgWrapper').on('click', '.sendCode', function() {
+            var myreg = /^(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(16[0-9]{1})|(17[0-9]{1})|(18[0-9]{1})|(19[0-9]{1}))+\d{8})$/;
+            if ($("#username1").val() == '') {
+                alert('手机号不能为空');
+                return;
+            } else if (!myreg.test($("#username1").val()))  {     
+                alert('请输入有效的手机号码！');  
+                return;
+            } else {
+                //				$('.retry').html(code);
+                $.ajax({
+                    type: "get",
+                    url: "/SER/GetMessage",
+                    async: true,
+                    data: {
+                        tel: $("#username1").val(),
+                        type: 1
+                    },
+                    success: function(res) {
+                        console.log(res);
+
+                    }
+                });
+            }
+
+        })
     });
 </script>
 

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button type="button">提交</button>
+</body>
+<script src="./js/plugins/jquery.js"></script>
+<script>
+    $(function() {
+        $("button").on("click", function() {
+            $.ajax({
+                type: "get",
+                url: "/test",
+                async: true,
+                data: {
+                    tel: 18317774424,
+                    type: 1
+                },
+                success: function(res) {
+                    console.log(res);
+                },
+                error: function(res) {
+                    console.log(res);
+                }
+            });
+        })
+
+    })
+</script>
+
+</html>
